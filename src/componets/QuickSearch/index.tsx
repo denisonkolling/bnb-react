@@ -35,7 +35,7 @@ const QuickSearch = () => {
 
 				<div className='flex flex-col items-center gap-1'>
 					<Link
-						to='/stays/search?text=Chalé'
+						to='/stays/search?text=chale'
 						className='flex flex-col items-center hover:text-primary transition-all'
 					>
 						<MdOutlineCottage size={'35px'} />

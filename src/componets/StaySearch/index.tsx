@@ -43,7 +43,7 @@ const StaySearch = () => {
 					{...register('text', {
 						required: {
 							value: true,
-							message: 'Texto é obrigatório.',
+							message: 'Insira o destino.',
 						},
 					})}
 				/>
