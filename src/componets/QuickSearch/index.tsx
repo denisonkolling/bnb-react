@@ -15,7 +15,7 @@ const QuickSearch = () => {
 			<div className='flex w-full justify-between mt-5 lg:mt-10 lg:justify-center gap-40'>
 				<div className='flex flex-col items-center gap-1'>
 					<Link
-						to='/trips/search?text=hotel'
+						to='/stays/search?text=hotel'
 						className='flex flex-col items-center hover:text-primary transition-all'
 					>
 						<MdOutlineHotel size={'35px'} />
@@ -25,7 +25,7 @@ const QuickSearch = () => {
 
 				<div className='flex flex-col items-center gap-1'>
 					<Link
-						to='/trips/search?text=fazenda'
+						to='/stays/search?text=fazenda'
 						className='flex flex-col items-center hover:text-primary transition-all'
 					>
 						<PiFarm size={'35px'} />
@@ -35,7 +35,7 @@ const QuickSearch = () => {
 
 				<div className='flex flex-col items-center gap-1'>
 					<Link
-						to='/trips/search?text=Chalé'
+						to='/stays/search?text=Chalé'
 						className='flex flex-col items-center hover:text-primary transition-all'
 					>
 						<MdOutlineCottage size={'35px'} />
@@ -45,7 +45,7 @@ const QuickSearch = () => {
 
 				<div className='flex flex-col items-center gap-1'>
 					<Link
-						to='/trips/search?text=pousada'
+						to='/stays/search?text=pousada'
 						className='flex flex-col items-center hover:text-primary transition-all'
 					>
 						<GoHome size={'35px'} />
