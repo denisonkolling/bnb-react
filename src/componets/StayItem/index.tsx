@@ -39,6 +39,7 @@ const StayItem = ({ stay }: StayItemProps) => {
 						src={stay.coverImage}
 						className='rounded-lg shadow-md'
 						style={{
+							height: '100%',
 							objectFit: 'cover',
 						}}
 						alt={stay.name}
