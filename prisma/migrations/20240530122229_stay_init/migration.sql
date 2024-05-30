@@ -1,9 +1,9 @@
 -- CreateTable
-CREATE TABLE "Trip" (
+CREATE TABLE "Stay" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "location" TEXT NOT NULL,
-    "locationDescription" TEXT NOT NULL DEFAULT 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+    "locationDescription" TEXT NOT NULL DEFAULT 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     "startDate" TIMESTAMP(3) NOT NULL,
     "endDate" TIMESTAMP(3) NOT NULL,
     "pricePerDay" DECIMAL(8,2) NOT NULL,
@@ -15,20 +15,20 @@ CREATE TABLE "Trip" (
     "countryCode" TEXT NOT NULL,
     "recommended" BOOLEAN NOT NULL DEFAULT false,
 
-    CONSTRAINT "Trip_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Stay_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "TripReservation" (
+CREATE TABLE "StayReservation" (
     "id" TEXT NOT NULL,
-    "tripId" TEXT NOT NULL,
+    "stayId" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
     "startDate" TIMESTAMP(3) NOT NULL,
     "endDate" TIMESTAMP(3) NOT NULL,
     "totalPaid" DECIMAL(8,2) NOT NULL,
     "guests" INTEGER NOT NULL DEFAULT 5,
 
-    CONSTRAINT "TripReservation_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "StayReservation_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -93,10 +93,10 @@ CREATE UNIQUE INDEX "VerificationToken_token_key" ON "VerificationToken"("token"
 CREATE UNIQUE INDEX "VerificationToken_identifier_token_key" ON "VerificationToken"("identifier", "token");
 
 -- AddForeignKey
-ALTER TABLE "TripReservation" ADD CONSTRAINT "TripReservation_tripId_fkey" FOREIGN KEY ("tripId") REFERENCES "Trip"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "StayReservation" ADD CONSTRAINT "StayReservation_stayId_fkey" FOREIGN KEY ("stayId") REFERENCES "Stay"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "TripReservation" ADD CONSTRAINT "TripReservation_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "StayReservation" ADD CONSTRAINT "StayReservation_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Account" ADD CONSTRAINT "Account_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;

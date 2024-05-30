@@ -1,7 +1,7 @@
 import { prisma } from "./prisma";
 
 async function main() {
-  await prisma.trip.createMany({
+  await prisma.stay.createMany({
     data: [
       {
         name: "Hotel Aurora",
