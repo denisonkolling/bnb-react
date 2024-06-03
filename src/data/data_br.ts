@@ -1,4 +1,77 @@
-export const StaysData = [
+export const myStays = [
+	{
+		id: 1,
+		name: 'Hotel Aurora',
+		description:
+			'O Hotel Aurora é um refúgio encantador situado em meio às majestosas montanhas. Com seus jardins exuberantes e uma arquitetura elegante, o Aurora oferece quartos espaçosos e bem decorados, gastronomia premiada, um spa luxuoso e uma variedade de instalações de lazer. É o lugar perfeito para os viajantes que buscam uma escapada relaxante e rejuvenescedora, proporcionando uma experiência memorável em um cenário deslumbrante.',
+		startDate: new Date('2024-02-21T00:00:00.000Z'),
+		endDate: new Date('2024-03-21T00:00:00.000Z'),
+		location: 'Amalfi, Itália',
+		countryCode: 'IT',
+		coverImage:
+			'https://images.unsplash.com/photo-1455587734955-081b22074882?ixlib=rb-4.0.3&ixid=M3wxMA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+		imagesUrl: [
+			'https://images.unsplash.com/photo-1538683270504-3d09ad7ae739?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+			'https://images.unsplash.com/photo-1528215747454-3d0e0902fff2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80',
+			'https://images.unsplash.com/photo-1534612899740-55c821a90129?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+		],
+		pricePerDay: 250,
+		highlights: ['Café da manhã incluso'],
+		recommended: true,
+		maxGuests: 5,
+		locationDescription: 'Nenhuma',
+		reservations: [
+			{
+				id: 'abc123',
+				stayId: '1',
+				userId: '1',
+				startDate: new Date('2024-02-21T00:00:00.000Z'),
+				endDate: new Date('2024-03-21T00:00:00.000Z'),
+				totalPaid: 582.34,
+				guests: 5,
+				stay: 1,
+				user: 'Denison Kolling',
+			},
+		],
+	},
+	{
+		id: 3,
+		name: 'Royal Oasis',
+		description:
+			'A Royal Oasis é um hotel de luxo exclusivo que combina uma arquitetura imponente, decoração refinada e serviços de alta qualidade para proporcionar aos seus hóspedes uma experiência inigualável. Com quartos espaçosos, restaurantes gourmet, instalações de bem-estar e um serviço impecável, este refúgio de tranquilidade e elegância é o local perfeito para aqueles que buscam o melhor em conforto e sofisticação.',
+		startDate: '2023-07-03',
+		endDate: '2023-07-30',
+		location: 'Florença, Itália',
+		countryCode: 'IT',
+		coverImage:
+			'https://images.unsplash.com/photo-1534612899740-55c821a90129?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+		imagesUrl: [
+			'https://images.unsplash.com/photo-1538683270504-3d09ad7ae739?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+			'https://images.unsplash.com/photo-1528215747454-3d0e0902fff2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80',
+			'https://images.unsplash.com/photo-1455587734955-081b22074882?ixlib=rb-4.0.3&ixid=M3wxMA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+		],
+		pricePerDay: 250,
+		highlights: ['Café da manhã incluso'],
+		recommended: true,
+		maxGuests: 5,
+		locationDescription: 'Nenhuma',
+		reservations: [
+			{
+				id: 'abc123',
+				stayId: '1',
+				userId: '1',
+				startDate: new Date('2024-05-21T00:00:00.000Z'),
+				endDate: new Date('2024-05-29T00:00:00.000Z'),
+				totalPaid: 962.34,
+				guests: 4,
+				stay: 1,
+				user: 'Denison Kolling',
+			},
+		],
+	},
+];
+
+export const staysData = [
 	{
 		id: 1,
 		name: 'Hotel Aurora',
