@@ -48,7 +48,7 @@ const ReservationCard = ({ stay }: StayItemProps) => {
 		});
 
 		if (!res.ok) {
-			return toast.error('Ocorreu um erro ao cancelar a reserva!');
+			return toast.error('Ocorreu um erro ao cancelar a reserva!', { position: 'bottom-center' });
 		}
 
 		toast.success('Reserva cancelada com sucesso!', { position: 'bottom-center' });
@@ -56,7 +56,6 @@ const ReservationCard = ({ stay }: StayItemProps) => {
 
 	return (
 		<div>
-			{/* CARD */}
 			<div className='flex flex-col p-5 mt-5 border-grayLighter border-solid border shadow-lg rounded-lg'>
 				<div className='flex items-center gap-3 pb-5 border-b border-grayLighter border-solid'>
 					<div className='relative h-[106px] w-[124px]'>
