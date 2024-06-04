@@ -1,9 +1,9 @@
 import { Stay } from '../StayItem';
 import StayItem from '../StayItem';
-import { staysData } from '../../data/data_br';
+import { myStays } from '../../data/data_br';
 
 const RecommendedStays = () => {
-	const data = staysData;
+	const data = myStays;
 
 	return (
 		<div className='container mx-auto p-5'>

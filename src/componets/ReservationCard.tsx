@@ -3,56 +3,32 @@ import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { toast } from 'react-toastify';
 import Button from './Button';
-import Stay from './StayItem';
-
-export type Stay = {
-	id: number | string;
-	name: string;
-	description: string;
-	startDate: Date | String;
-	endDate: Date | String;
-	location: string;
-	countryCode: string;
-	coverImage: string;
-	imagesUrl: string[];
-	pricePerDay: number;
-	highlights: string[];
-	recommended: boolean;
-	maxGuests: number;
-	locationDescription: string;
-	reservations: StayReservation[];
-};
-
-interface StayReservation {
-	id: string;
-	stayId: string;
-	userId: string;
-	startDate: Date;
-	endDate: Date;
-	totalPaid: number;
-	guests: number;
-	stay: number;
-	user: string;
-}
+import { Stay } from '../componets/StayItem';
 
 interface StayItemProps {
 	stay: Stay;
 }
 
 const ReservationCard = ({ stay }: StayItemProps) => {
-	const reservations = stay.reservations[0];
+	const reservations = stay.reservations.length > 0 ? stay.reservations[0] : null;
 
-	const handleDeleteClick = async () => {
-		const res = await fetch(`/api/stays/reservations/${reservations.id}`, {
-			method: 'DELETE',
-		});
+	const handleCancelClick = async () => {
+		if (reservations) {
+			const res = await fetch(`/api/stays/reservations/${reservations.id}`, {
+				method: 'DELETE',
+			});
 
-		if (!res.ok) {
-			return toast.error('Ocorreu um erro ao cancelar a reserva!', { position: 'bottom-center' });
+			if (!res.ok) {
+				return toast.error('Ocorreu um erro ao cancelar a reserva!', { position: 'bottom-center' });
+			}
+
+			toast.success('Reserva cancelada com sucesso!', { position: 'bottom-center' });
 		}
-
-		toast.success('Reserva cancelada com sucesso!', { position: 'bottom-center' });
 	};
+
+	if (!reservations) {
+		return null;
+	}
 
 	return (
 		<div>
@@ -100,7 +76,7 @@ const ReservationCard = ({ stay }: StayItemProps) => {
 						<p className='font-medium text-sm'>R${Number(reservations.totalPaid)}</p>
 					</div>
 
-					<Button variant='danger' className='mt-5' onClick={handleDeleteClick}>
+					<Button variant='danger' className='mt-5' onClick={handleCancelClick}>
 						Cancelar
 					</Button>
 				</div>
