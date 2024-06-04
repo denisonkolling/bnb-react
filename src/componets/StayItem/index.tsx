@@ -4,26 +4,31 @@ import ReactCountryFlag from 'react-country-flag';
 export type Stay = {
 	id: number;
 	name: string;
-	location: string;
-	pricePerDay: number;
 	description: string;
+	startDate: Date;
+	endDate: Date;
+	location: string;
+	countryCode: string;
 	coverImage: string;
 	imagesUrl: string[];
+	pricePerDay: number;
 	highlights: string[];
-	maxGuests: number;
-	countryCode: string;
 	recommended: boolean;
-	startDate: Date | String;
-	endDate: Date | String;
-	locationDescription: string | null;
-	reservations: StayReservation[] | null;
+	maxGuests: number;
+	locationDescription: string;
+	reservations: StayReservation[];
 };
 
 interface StayReservation {
-	id: string;
-	guestName: string;
-	checkInDate: Date;
-	checkOutDate: Date;
+	id: number;
+	stayId: number;
+	userId: number;
+	startDate: Date;
+	endDate: Date;
+	totalPaid: number;
+	guests: number;
+	stay: number;
+	user: string;
 }
 
 interface StayItemProps {
