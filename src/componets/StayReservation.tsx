@@ -38,45 +38,6 @@ const StayReservation = ({
 	const navigate = useNavigate();
 
 	const onSubmit = async (data: StayReservationForm) => {
-		const response = await fetch('/api/stays/check', {
-			method: 'POST',
-			body: Buffer.from(
-				JSON.stringify({
-					startDate: data.startDate,
-					endDate: data.endDate,
-					stayId,
-				})
-			),
-		});
-
-		const res = await response.json();
-
-		if (res?.error?.code === 'TRIP_ALREADY_RESERVED') {
-			setError('startDate', {
-				type: 'manual',
-				message: 'Esta data já está reservada.',
-			});
-
-			return setError('endDate', {
-				type: 'manual',
-				message: 'Esta data já está reservada.',
-			});
-		}
-
-		if (res?.error?.code === 'INVALID_START_DATE') {
-			return setError('startDate', {
-				type: 'manual',
-				message: 'Data inválida.',
-			});
-		}
-
-		if (res?.error?.code === 'INVALID_END_DATE') {
-			return setError('endDate', {
-				type: 'manual',
-				message: 'Data inválida.',
-			});
-		}
-
 		navigate(
 			`/stays/${stayId}/confirmation?startDate=${data.startDate?.toISOString()}&endDate=${data.endDate?.toISOString()}&guests=${
 				data.guests
