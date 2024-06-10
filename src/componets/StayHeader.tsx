@@ -86,7 +86,7 @@ const StayHeader = ({ stay }: StayHeaderProps) => {
 
 				<div className='flex items-center gap-1 my-1'>
 					<ReactCountryFlag countryCode={stay.countryCode} svg />
-					<p className='text-xs lg:text-base text-grayPrimary underline'>{stay.location}</p>
+					<p className='text-xs lg:text-base text-grayPrimary px-2'>{stay.location}</p>
 				</div>
 
 				<p className='text-xs text-grayPrimary lg:hidden'>
