@@ -15,6 +15,7 @@ const TripLocation = ({ location, locationDescription }: TripLocationProps) => {
 					alt={location}
 					style={{
 						objectFit: 'cover',
+						maxHeight: '100%',
 					}}
 					className='rounded-lg shadow-md'
 				/>
@@ -26,6 +27,7 @@ const TripLocation = ({ location, locationDescription }: TripLocationProps) => {
 					alt={location}
 					style={{
 						objectFit: 'cover',
+						maxHeight: '100%',
 					}}
 					className='rounded-lg shadow-md'
 				/>
