@@ -5,6 +5,7 @@ import Input from './Input';
 import { differenceInDays } from 'date-fns';
 import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { formatPrice } from '../utils/formatPrice';
 
 interface StayReservationProps {
 	stayId: number;
@@ -42,6 +43,7 @@ const StayReservation = ({
 
 	const startDate = watch('startDate');
 	const endDate = watch('endDate');
+	const today = new Date();
 
 	useEffect(() => {
 		if (startDate && endDate) {
@@ -60,6 +62,8 @@ const StayReservation = ({
 			}&totalPrice=${data.totalPrice}`
 		);
 	};
+
+	const totalPrice = startDate && endDate ? differenceInDays(endDate, startDate) * pricePerDay : 0;
 
 	return (
 		<div className='flex flex-col px-5 lg:min-w-[380px] lg:p-5 lg:border-grayLighter lg:border lg:rounded-lg lg:shadow-md'>
@@ -83,9 +87,9 @@ const StayReservation = ({
 							errorMessage={errors?.startDate?.message}
 							onChange={field.onChange}
 							selected={field.value}
-							placeholderText='Data de Início'
+							placeholderText='Data de check in'
 							className='w-full'
-							minDate={stayStartDate}
+							minDate={today}
 						/>
 					)}
 				/>
@@ -105,7 +109,7 @@ const StayReservation = ({
 							errorMessage={errors?.endDate?.message}
 							onChange={field.onChange}
 							selected={field.value}
-							placeholderText='Data Final'
+							placeholderText='Data de check out'
 							className='w-full'
 							maxDate={stayEndDate}
 							minDate={startDate ?? stayStartDate}
@@ -132,12 +136,10 @@ const StayReservation = ({
 				type='number'
 			/>
 
-			<div className='flex justify-between mt-3'>
-				<p className='font-medium text-sm text-primaryDarker'>Total: </p>
-				<p className='font-medium text-sm text-primaryDarker'>
-					{startDate && endDate
-						? `R$${differenceInDays(endDate, startDate) * pricePerDay}` ?? 1
-						: 'R$0'}
+			<div className='flex justify-end mt-3'>
+				<p className='font-medium text-sm text-primaryDarker px-2'>Total</p>
+				<p className='font-medium text-sm text-primaryDarker px-2'>
+					{startDate && endDate ? formatPrice(totalPrice) ?? 1 : 'R$ 0,00'}
 				</p>
 			</div>
 

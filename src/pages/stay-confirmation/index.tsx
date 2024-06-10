@@ -7,6 +7,7 @@ import Button from '../../componets/Button';
 import { toast } from 'react-toastify';
 import { Stay } from '../../componets/StayItem';
 import { myStays } from '../../data/data_br';
+import { formatPrice } from '../../utils/formatPrice';
 
 const StayConfirmation = () => {
 	const [stay, setStay] = useState<Stay | null>(null);
@@ -47,7 +48,7 @@ const StayConfirmation = () => {
 	const startDate = new Date(searchParams.get('startDate') as string);
 	const endDate = new Date(searchParams.get('endDate') as string);
 	const guests = searchParams.get('guests');
-	const totalPrice = searchParams.get('totalPrice');
+	const totalPrice = Number(searchParams.get('totalPrice'));
 
 	return (
 		<div className='container mx-auto p-5 lg:max-w-[600px]'>
@@ -77,8 +78,8 @@ const StayConfirmation = () => {
 				<h3 className='font-semibold text-lg text-primaryDarker mt-3'>Informações sobre o preço</h3>
 
 				<div className='flex justify-between mt-1'>
-					<p className='text-primaryDarker'>Total:</p>
-					<p className='font-medium'>R${totalPrice}</p>
+					<p className='text-primaryDarker'>Total</p>
+					<p className='font-medium'>{formatPrice(totalPrice)}</p>
 				</div>
 			</div>
 
