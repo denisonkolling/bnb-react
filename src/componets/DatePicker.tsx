@@ -1,8 +1,7 @@
 import { LegacyRef, forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 import _DatePicker, { ReactDatePickerProps, registerLocale } from 'react-datepicker';
-import ptBR from 'date-fns/locale/pt-BR';
-
+import { ptBR } from 'date-fns/locale';
 import 'react-datepicker/dist/react-datepicker.css';
 
 registerLocale('pt-BR', ptBR);
@@ -23,7 +22,7 @@ function DatePicker(
 	);
 
 	return (
-		<div className='flex w-full flex-col'>
+		<div ref={ref} className='flex w-full flex-col'>
 			<_DatePicker
 				dateFormat='dd/MM/yyyy'
 				locale='pt-BR'
