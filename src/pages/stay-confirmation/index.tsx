@@ -7,7 +7,6 @@ import Button from '../../componets/Button';
 import { toast } from 'react-toastify';
 import { Stay } from '../../componets/StayItem';
 import { myStays } from '../../data/data_br';
-import { differenceInDays } from 'date-fns';
 
 const StayConfirmation = () => {
 	const [stay, setStay] = useState<Stay | null>(null);
@@ -15,17 +14,8 @@ const StayConfirmation = () => {
 	const [status] = useState('authenticated');
 	const { stayId } = useParams<{ stayId: string }>();
 	const navigate = useNavigate();
-	
-	const startDateStay = searchParams.get('startDate');
-	const endDateStay = searchParams.get('endDate');
-	const [totalPrice, setTotalPrice] = useState<number>(0);
-
 
 	useEffect(() => {
-		const startDate = searchParams.get('startDate') || '';
-		const endDate = searchParams.get('endDate') || '';
-		const guests = searchParams.get('guests');
-
 		if (stayId !== undefined) {
 			const id = parseInt(stayId);
 			const selectedStay = myStays.find((stay) => stay.id === id);
@@ -40,15 +30,6 @@ const StayConfirmation = () => {
 		if (status === 'unauthenticated') {
 			navigate('/');
 		}
-
-		if (startDateStay && endDateStay) {
-			const startDate = new Date(startDateStay);
-			const endDate = new Date(endDateStay);
-			const daysDifference = differenceInDays(endDate, startDate);
-			const calculatedTotalPrice = daysDifference * 500;
-			setTotalPrice(calculatedTotalPrice);
-		}
-
 	}, [status, searchParams, stayId, navigate]);
 
 	if (!stay) return null;
@@ -66,6 +47,7 @@ const StayConfirmation = () => {
 	const startDate = new Date(searchParams.get('startDate') as string);
 	const endDate = new Date(searchParams.get('endDate') as string);
 	const guests = searchParams.get('guests');
+	const totalPrice = searchParams.get('totalPrice');
 
 	return (
 		<div className='container mx-auto p-5 lg:max-w-[600px]'>

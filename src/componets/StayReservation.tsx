@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Button from './Button';
 import DatePicker from './DatePicker';
 import Input from './Input';
@@ -17,6 +18,7 @@ interface StayReservationForm {
 	guests: number;
 	startDate: Date;
 	endDate: Date;
+	totalPrice: number;
 }
 
 const StayReservation = ({
@@ -32,21 +34,32 @@ const StayReservation = ({
 		formState: { errors },
 		control,
 		watch,
+		setValue,
 		setError,
 	} = useForm<StayReservationForm>();
 
 	const navigate = useNavigate();
 
+	const startDate = watch('startDate');
+	const endDate = watch('endDate');
+
+	useEffect(() => {
+		if (startDate && endDate) {
+			const days = differenceInDays(endDate, startDate);
+			const totalPrice = days * pricePerDay;
+			setValue('totalPrice', totalPrice);
+		} else {
+			setValue('totalPrice', 0);
+		}
+	}, [startDate, endDate, pricePerDay, setValue]);
+
 	const onSubmit = async (data: StayReservationForm) => {
 		navigate(
 			`/stays/${stayId}/confirmation?startDate=${data.startDate?.toISOString()}&endDate=${data.endDate?.toISOString()}&guests=${
 				data.guests
-			}`
+			}&totalPrice=${data.totalPrice}`
 		);
 	};
-
-	const startDate = watch('startDate');
-	const endDate = watch('endDate');
 
 	return (
 		<div className='flex flex-col px-5 lg:min-w-[380px] lg:p-5 lg:border-grayLighter lg:border lg:rounded-lg lg:shadow-md'>
