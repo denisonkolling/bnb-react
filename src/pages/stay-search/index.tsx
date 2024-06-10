@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 
 const Stays = () => {
 	const [stays, setStays] = React.useState<Stay[]>([]);
-	const [searchParams, setSearchParams] = useSearchParams();
+	const [searchParams] = useSearchParams();
 
 	useEffect(() => {
 		const fetchStays = async () => {

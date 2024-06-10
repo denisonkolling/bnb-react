@@ -36,7 +36,6 @@ const StayReservation = ({
 		control,
 		watch,
 		setValue,
-		setError,
 	} = useForm<StayReservationForm>();
 
 	const navigate = useNavigate();

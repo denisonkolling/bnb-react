@@ -10,7 +10,7 @@ const TripHighlights = ({ highlights }: TripHighlightsProps) => {
 			<h2 className='font-semibold text-primaryDarker mb-2 lg:text-xl'>Destaques</h2>
 
 			<div className='flex flex-wrap gap-y-3 lg:mt-5'>
-				{highlights.map((highlight, index) => (
+				{highlights.map((highlight) => (
 					<div key={highlight} className='flex items-center gap-2 lg:gap-3 w-1/2'>
 						<FaRegCheckCircle size={'15px'} />
 
